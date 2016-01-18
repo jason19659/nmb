@@ -3,10 +3,11 @@
 <mapper namespace="pw.jason19659.nmb.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="pw.jason19659.nmb.model.User" >
     <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="pub_date" property="pubDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, pub_date
+    id, password, pub_date
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -19,14 +20,19 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="pw.jason19659.nmb.model.User" >
-    insert into user (id, pub_date)
-    values (#{id,jdbcType=VARCHAR}, #{pubDate,jdbcType=TIMESTAMP})
+    insert into user (id, password, pub_date
+      )
+    values (#{id,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{pubDate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="pw.jason19659.nmb.model.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="password != null" >
+        password,
       </if>
       <if test="pubDate != null" >
         pub_date,
@@ -36,6 +42,9 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
       <if test="pubDate != null" >
         #{pubDate,jdbcType=TIMESTAMP},
       </if>
@@ -44,6 +53,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="pw.jason19659.nmb.model.User" >
     update user
     <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
       <if test="pubDate != null" >
         pub_date = #{pubDate,jdbcType=TIMESTAMP},
       </if>
@@ -52,7 +64,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="pw.jason19659.nmb.model.User" >
     update user
-    set pub_date = #{pubDate,jdbcType=TIMESTAMP}
+    set password = #{password,jdbcType=VARCHAR},
+      pub_date = #{pubDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

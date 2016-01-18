@@ -98,7 +98,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>/</welcome-file>
+		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- filter> <filter-name>AdminFilter</filter-name> <filter-class>cn.ichudian.nsapp2.interceptor.ComptenceInterceptor</filter-class> 
 		</filter> <filter-mapping> <filter-name>AdminFilter</filter-name> <url-pattern>/admin/*</url-pattern> 

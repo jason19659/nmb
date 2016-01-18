@@ -20,7 +20,22 @@ public class Post {
     private Date pubdate;
     
 
-    public String getId() {
+    public Post(String pid, Integer sectionId, String userId, String title, String content, String image, Date pubdate) {
+		super();
+		this.pid = pid;
+		this.sectionId = sectionId;
+		this.userId = userId;
+		this.title = title;
+		this.content = content;
+		this.image = image;
+		this.pubdate = pubdate;
+	}
+    
+    public Post(){
+    	
+    }
+
+	public String getId() {
         return id;
     }
 

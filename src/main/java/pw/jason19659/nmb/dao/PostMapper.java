@@ -14,6 +14,8 @@ public interface PostMapper {
     Post selectByPrimaryKey(String id);
     
     List<Post> selectByPid(String pid);
+    
+    List<Post> selectAll();
 
     int updateByPrimaryKeySelective(Post record);
 

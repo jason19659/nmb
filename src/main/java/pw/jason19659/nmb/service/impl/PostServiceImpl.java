@@ -3,13 +3,17 @@
  */
 package pw.jason19659.nmb.service.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pw.jason19659.nmb.dao.PostMapper;
 import pw.jason19659.nmb.model.Post;
+import pw.jason19659.nmb.model.PostDto;
 import pw.jason19659.nmb.service.PostService;
 
 /**
@@ -71,6 +75,26 @@ public class PostServiceImpl implements PostService {
 	 */
 	public int updateByPrimaryKey(Post record) {
 		return postMapper.updateByPrimaryKey(record);
+	}
+	
+	public List<PostDto> getWithSubPosts(List<Post> posts) throws Exception {
+		List<PostDto> lists = new LinkedList<PostDto>();
+		for (Post p : posts) {
+			PostDto postDto = getWithSubPost(p);
+			lists.add(postDto);
+		}
+		return lists;
+	}
+	
+	public PostDto getWithSubPost(Post p) throws Exception {
+		PostDto postDto = new PostDto();
+		BeanUtils.copyProperties(postDto, p);
+		postDto.setSubPosts(selectByPid(p.getId()));
+		return postDto;
+	}
+	
+	public List<Post> selectAll() {
+		return postMapper.selectAll();
 	}
 
 }

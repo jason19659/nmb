@@ -173,7 +173,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
+			<artifactId>spring-websocket</artifactId> 
 			<version>4.0.1.RELEASE</version>
 		</dependency>
 		<dependency>
@@ -184,5 +184,17 @@
 	</dependencies>
 	<build>
 		<finalName>nmb</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://jason19659.pw/manager/html</url>
+					<server>tomcat</server>
+					<path>/nmb</path>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

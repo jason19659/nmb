@@ -1,5 +1,7 @@
 package pw.jason19659.nmb.dao;
 
+import java.util.List;
+
 import pw.jason19659.nmb.model.Section;
 
 public interface SectionMapper {
@@ -14,4 +16,6 @@ public interface SectionMapper {
     int updateByPrimaryKeySelective(Section record);
 
     int updateByPrimaryKey(Section record);
+	public List<Section> selectAll() ;
+    
 }

@@ -3,6 +3,7 @@ package pw.jason19659.nmb.service;
 import java.util.List;
 
 import pw.jason19659.nmb.model.Post;
+import pw.jason19659.nmb.model.PostDto;
 
 public interface PostService {
     int deleteByPrimaryKey(String id);
@@ -18,4 +19,10 @@ public interface PostService {
     int updateByPrimaryKeySelective(Post record);
 
     int updateByPrimaryKey(Post record);
+    
+    public List<PostDto> getWithSubPosts(List<Post> posts) throws Exception;
+    
+    public PostDto getWithSubPost(Post p) throws Exception;
+
+	List<Post> selectAll();
 }
