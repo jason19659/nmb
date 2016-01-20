@@ -173,7 +173,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId> 
+			<artifactId>spring-websocket</artifactId>
 			<version>4.0.1.RELEASE</version>
 		</dependency>
 		<dependency>
@@ -185,6 +185,16 @@
 	<build>
 		<finalName>nmb</finalName>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>

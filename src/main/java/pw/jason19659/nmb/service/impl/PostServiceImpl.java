@@ -88,8 +88,11 @@ public class PostServiceImpl implements PostService {
 	
 	public PostDto getWithSubPost(Post p) throws Exception {
 		PostDto postDto = new PostDto();
-		BeanUtils.copyProperties(postDto, p);
-		postDto.setSubPosts(selectByPid(p.getId()));
+		try {
+			BeanUtils.copyProperties(postDto, p);
+			postDto.setSubPosts(selectByPid(p.getId()));
+		} catch (Exception e) {
+		}
 		return postDto;
 	}
 	
